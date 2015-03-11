@@ -169,7 +169,8 @@ public class WordFrequency extends Configured implements Tool {
 		FileInputFormat.setInputPaths(job, inputPath);
 		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH1));
 
-		job.setNumReduceTasks(16);
+		int noMachines = Integer.parseInt(arg0[3]);
+		job.setNumReduceTasks(noMachines/2);
 		/*
 		 * Path stopWord = new Path("stop-word"); Path taggers = new
 		 * Path("taggers/english-left3words-distsim.tagger"); Path wordnet = new

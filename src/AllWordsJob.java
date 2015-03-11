@@ -72,7 +72,8 @@ public class AllWordsJob extends Configured implements Tool {
 		FileInputFormat.setInputPaths(job, new Path(OUTPUT_PATH2));
 		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH4));
 
-		job.setNumReduceTasks(16);
+		int noMachines = Integer.parseInt(arg0[3]);
+		job.setNumReduceTasks(noMachines/2);
 		
 		return job.waitForCompletion(true) ? 0 : 1;
 	}

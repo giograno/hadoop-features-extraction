@@ -118,7 +118,8 @@ public class WordInCorpusTFIDF extends Configured implements Tool {
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
 
-		job.setNumReduceTasks(16);
+		int noMachines = Integer.parseInt(arg0[3]);
+		job.setNumReduceTasks(noMachines/2);
 		
 		FileInputFormat.setInputPaths(job, new Path(OUTPUT_PATH2));
 		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH3));
