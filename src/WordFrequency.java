@@ -83,12 +83,13 @@ public class WordFrequency extends Configured implements Tool {
 		public void setup(Context context) throws IOException {
 
 			tagger = new MaxentTagger(
-					"taggers/english-left3words-distsim.tagger");
-			wordNetPath = "WordNet-3/dict";
-			stopWord = "stop-word";
+					"/home/user/Scrivania/utils/taggers/english-left3words-distsim.tagger");
+			wordNetPath = "/home/user/Scrivania/utils/WordNet-3/dict";
+			stopWord = "/home/user/Scrivania/utils/stop-word";
 
 			System.setProperty("org.apache.pdfbox.baseParser.pushBackSize",
 					"999999");
+			
 		}
 	}
 
