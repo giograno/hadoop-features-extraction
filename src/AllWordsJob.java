@@ -54,25 +54,27 @@ public class AllWordsJob extends Configured implements Tool {
 	@Override
 	public int run(String[] arg0) throws Exception {
 		Configuration configuration5 = new Configuration();
-		Job job5 = Job.getInstance(configuration5, "All words in Documents");
+		Job job = Job.getInstance(configuration5, "All words in Documents");
 
-		job5.setJarByClass(AllWordsJob.class);
-		job5.setMapperClass(AllWordsJobMapper.class);
-		job5.setReducerClass(AllWordsJobReduce.class);
+		job.setJarByClass(AllWordsJob.class);
+		job.setMapperClass(AllWordsJobMapper.class);
+		job.setReducerClass(AllWordsJobReduce.class);
 
-		job5.setMapOutputKeyClass(Text.class);
-		job5.setMapOutputValueClass(NullWritable.class);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(NullWritable.class);
 
-		job5.setOutputKeyClass(Text.class);
-		job5.setOutputValueClass(NullWritable.class);
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(NullWritable.class);
 
-		job5.setInputFormatClass(TextInputFormat.class);
-		job5.setOutputFormatClass(TextOutputFormat.class);
+		job.setInputFormatClass(TextInputFormat.class);
+		job.setOutputFormatClass(TextOutputFormat.class);
 
-		FileInputFormat.setInputPaths(job5, new Path(OUTPUT_PATH2));
-		FileOutputFormat.setOutputPath(job5, new Path(OUTPUT_PATH4));
+		FileInputFormat.setInputPaths(job, new Path(OUTPUT_PATH2));
+		FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH4));
 
-		return job5.waitForCompletion(true) ? 0 : 1;
+		job.setNumReduceTasks(16);
+		
+		return job.waitForCompletion(true) ? 0 : 1;
 	}
 
 }
