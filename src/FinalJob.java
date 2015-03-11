@@ -113,7 +113,8 @@ public class FinalJob extends Configured implements Tool {
 		FileInputFormat.setInputPaths(job, new Path(OUTPUT_PATH3));
 		FileOutputFormat.setOutputPath(job, outputPath);
 
-		job.setNumReduceTasks(16);
+		int noMachines = Integer.parseInt(arg0[3]);
+		job.setNumReduceTasks(noMachines/2);
 		
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
