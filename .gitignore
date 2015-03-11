@@ -1,5 +1,15 @@
 reated by https://www.gitignore.io
 
+###Folders Hadoop ###
+all-words/
+MYINPUT2/
+INPUT/
+OUTPUT/
+word-counts/
+word-frequency/
+feature-values/
+
+
 ### Eclipse ###
 *.pydevproject
 .metadata
