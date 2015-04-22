@@ -81,15 +81,10 @@ public class WordFrequency extends Configured implements Tool {
 		}
 
 		public void setup(Context context) throws IOException {
-
-			tagger = new MaxentTagger(
-					"/home/user/Scrivania/utils/taggers/english-left3words-distsim.tagger");
-			wordNetPath = "/home/user/Scrivania/utils/WordNet-3/dict";
-			stopWord = "/home/user/Scrivania/utils/stop-word";
-
-			System.setProperty("org.apache.pdfbox.baseParser.pushBackSize",
-					"999999");
 			
+			stopWord = "stop-word"; 
+			tagger = new MaxentTagger("taggers/english-left3words-distsim.tagger");
+			wordNetPath = "WordNet-3/dict";
 		}
 	}
 
@@ -171,14 +166,15 @@ public class WordFrequency extends Configured implements Tool {
 
 		int noMachines = Integer.parseInt(arg0[3]);
 		job.setNumReduceTasks(noMachines/2);
-		/*
-		 * Path stopWord = new Path("stop-word"); Path taggers = new
-		 * Path("taggers/english-left3words-distsim.tagger"); Path wordnet = new
-		 * Path("WordNet-3/dict");
-		 * 
-		 * job.addCacheFile(stopWord.toUri());
-		 * job.addCacheFile(taggers.toUri()); job.addCacheFile(wordnet.toUri());
-		 */
+		
+		Path stopWord = new Path("stop-word"); 		
+		Path taggers = new Path("taggers/english-left3words-distsim.tagger"); 
+		Path wordnet = new Path("WordNet-3/dict");
+		
+		job.addCacheFile(stopWord.toUri());
+		job.addCacheFile(taggers.toUri());
+		job.addCacheFile(wordnet.toUri());
+		 
 
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
