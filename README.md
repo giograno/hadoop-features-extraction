@@ -1,7 +1,8 @@
-# hadoop-features-extraction
+# Hadoop Feature Extraction
 
-Questo programma estrae una serie di features, quali Term Frequency e Term Frequency Inverse Document Frequency da un corpo di documenti PDF attraverso l'utilizzo di Hadoop.
+This is an Hadoop program that extract from a large bunch of PDF files two different kind of features:
 
-È stato sviluppato per il corso di Sistemi Operativi Avanzati della Laurea Magistrale di Informatica dell'Università degli Studi di Salerno.
+* Term Frequency (_tf_);
+* Term Frequency Inverse Document Frequency (_tfidf_);
 
-Developers Team: Giovanni Grano, Ciro Amati, Stefania Cardamone, Gino Farisano, Giuseppe Luciano
+Developed for the Advanced Operative System course, Master's course at University of Salerno.
